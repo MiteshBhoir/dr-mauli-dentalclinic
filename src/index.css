@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 170 20% 99%;
+    --foreground: 186 80% 12%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 186 80% 12%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 186 80% 12%;
+
+    --primary: 182 76% 25%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 180 43% 94%;
+    --secondary-foreground: 186 80% 12%;
+
+    --muted: 170 14% 96%;
+    --muted-foreground: 186 20% 40%;
+
+    --accent: 36 100% 81%;
+    --accent-foreground: 186 80% 12%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 180 20% 90%;
+    --input: 180 20% 90%;
+    --ring: 182 76% 25%;
+
+    --radius: 1rem;
+
+    --deep-base: 183 78% 17%;
+    --deep-base-foreground: 0 0% 100%;
+
+    --cool-grey: 170 14% 97%;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+
+    --font-display: 'Montserrat', sans-serif;
+    --font-body: 'Inter', sans-serif;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+  }
+}
+
+@layer components {
+  .section-dark {
+    background-color: hsl(var(--deep-base));
+    color: hsl(var(--deep-base-foreground));
+  }
+
+  .section-light {
+    background-color: hsl(var(--cool-grey));
+  }
+
+  .gradient-hero {
+    background: linear-gradient(135deg, hsl(var(--deep-base)) 0%, hsl(var(--primary)) 50%, hsl(var(--secondary)) 100%);
+  }
+
+  .gradient-teal-white {
+    background: linear-gradient(180deg, hsl(var(--primary) / 0.08) 0%, hsl(var(--background)) 100%);
+  }
+
+  .card-soft {
+    @apply bg-card rounded-2xl;
+    box-shadow: 0 4px 24px -4px hsl(var(--primary) / 0.08);
+  }
+
+  .card-hover {
+    @apply transition-all duration-300;
+  }
+  .card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px -8px hsl(var(--primary) / 0.15);
+  }
+
+  .pill-filter {
+    @apply px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-200 cursor-pointer;
+    font-family: var(--font-body);
+  }
+  .pill-filter-active {
+    @apply bg-primary text-primary-foreground;
+  }
+  .pill-filter-inactive {
+    @apply bg-secondary text-secondary-foreground hover:bg-primary/10;
+  }
+
+  .floating-btn {
+    @apply rounded-full shadow-lg flex items-center justify-center transition-transform duration-200;
+    width: 56px;
+    height: 56px;
+  }
+  .floating-btn:hover {
+    transform: scale(1.1);
+  }
+
+  .pulse-ring {
+    animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  @keyframes pulse-ring {
+    0%, 100% { box-shadow: 0 0 0 0 hsl(var(--primary) / 0.4); }
+    50% { box-shadow: 0 0 0 12px hsl(var(--primary) / 0); }
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
